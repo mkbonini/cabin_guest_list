@@ -21,4 +21,16 @@ RSpec.describe 'the cabins show page' do
         expect(page).to have_content(@cabin_1.max_guest_count)
         expect(page).to_not have_content(@cabin_2.max_guest_count)
     end
+
+    it 'displays the cabin occupancy' do 
+        visit "/cabins/#{@cabin_1.id}"
+
+        expect(page).to have_content("2/#{@cabin_1.max_guest_count}")
+    end
+
+    it 'has a link to the cabin index' do
+        visit "/cabins/#{@cabin_1.id}"
+
+        expect(page).to have_link("#{@guest_1.first_name} #{@guest_1.last_name}",'/cabin/#{@cabin_1.id}/guest')
+    end
 end

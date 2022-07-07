@@ -9,10 +9,39 @@ RSpec.describe 'the cabins index page' do
         @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Doe', invite: false, plus_ones: 0)
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'Doe', invite: true, plus_ones: 0)
     end
+
     it 'displays the cabin names' do
         visit "/cabins"
 
         expect(page).to have_content(@cabin_1.title)
         expect(page).to have_content(@cabin_2.title)
     end
-end
+
+    it 'displays the cabin created_at field' do
+        visit "/cabins"
+
+        expect(page).to have_content(@cabin_1.created_at)
+        expect(page).to have_content(@cabin_2.created_at)
+    end
+
+    it 'displays the cabins most recent first' do
+        visit "/cabins"
+
+        first = @cabin_2.created_at
+        second = @cabin_1.created_at
+        expect(first).to appear_before(second)
+        # binding.pry
+    end
+
+    it 'has a link to the guest index' do
+        visit "/cabins"
+
+        expect(page).to have_link("Guest index","/guest/index")
+    end
+
+    it 'has a link to the cabin index' do
+        visit "/cabins"
+
+        expect(page).to have_link("Cabin index", 'cabin/index')
+    end
+ end

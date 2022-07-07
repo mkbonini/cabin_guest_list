@@ -11,10 +11,6 @@ RSpec.describe 'the cabins index page' do
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'Doe', invite: true, plus_ones: 0)
     end
 
-# As a visitor
-# When I visit '/parents/:parent_id/child_table_name'
-# Then I see each Child that is associated with that Parent with each Child's attributes:
-
     it 'displays the cabin names' do
         visit "/cabins/#{@cabin_1.id}/guests"
 
