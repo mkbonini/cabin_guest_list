@@ -1,0 +1,6 @@
+<h1>Cabins</h1>
+<% @cabins.each do |cabin| %>
+    <h3><%= cabin.title %></h3>
+    <p>co-ed?: <%= cabin.co_ed%></p>
+    <p>max number of guests: <%= cabin.max_guest_count%></p>
+<% end %>
