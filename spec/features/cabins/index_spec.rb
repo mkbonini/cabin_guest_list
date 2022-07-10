@@ -27,21 +27,21 @@ RSpec.describe 'the cabins index page' do
     it 'displays the cabins most recent first' do
         visit "/cabins"
 
-        first = @cabin_2.created_at
-        second = @cabin_1.created_at
+        first = @cabin_2.title
+        second = @cabin_1.title
+
         expect(first).to appear_before(second)
-        # binding.pry
     end
 
     it 'has a link to the guest index' do
         visit "/cabins"
 
-        expect(page).to have_link("Guest index","/guest/index")
+        expect(page).to have_link("Guest index", :href =>"/guests")
     end
 
     it 'has a link to the cabin index' do
         visit "/cabins"
 
-        expect(page).to have_link("Cabin index", 'cabin/index')
+        expect(page).to have_link("Cabin index", :href =>'/cabins')
     end
  end

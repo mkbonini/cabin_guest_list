@@ -14,9 +14,20 @@ RSpec.describe 'the cabins index page' do
     it 'displays the cabin names' do
         visit "/cabins/#{@cabin_1.id}/guests"
 
-        expect(page).to have_content(@cabin_1.title)
         expect(page).to have_content(@guest_1.first_name)
         expect(page).to have_content(@guest_2.first_name)
         expect(page).to_not have_content(@guest_3.first_name)
+    end
+    
+    it 'has a link to the guest index' do
+        visit "/cabins"
+
+        expect(page).to have_link("Guest index", :href =>"/guests")
+    end
+
+    it 'has a link to the cabin index' do
+        visit "/cabins"
+
+        expect(page).to have_link("Cabin index", :href =>'/cabins')
     end
 end

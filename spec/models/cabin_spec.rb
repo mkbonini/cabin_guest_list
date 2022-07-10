@@ -15,12 +15,22 @@ describe Cabin, type: :model do
 #   I see that records are ordered by most recently created first
 #   And next to each of the records I see when it was created
   describe 'methods' do
-    #   @cabin = Cabin.create!(title: 'cabin 1', co_ed: true, max_guest_count: 8)
-    #   @cabin_2 = Cabin.create!(title: 'cabin 2', co_ed: false, max_guest_count: 10)
+    before(:each) do
+        @cabin_1 = Cabin.create!(title: 'cabin 1', co_ed: true, max_guest_count: 8)
+        @cabin_2 = Cabin.create!(title: 'cabin 2', co_ed: false, max_guest_count: 10)
 
-    #   it 'should return cabins most recently created first' do
-    #       Cabin.all.should == [@cabin_2,@cabin]
-    #   end
+        @guest_1 = @cabin_1.guests.create(first_name: 'Mike', last_name:'Bonini', invite: true, plus_ones: 1)
+        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Doe', invite: false, plus_ones: 0)
+        @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'Doe', invite: true, plus_ones: 0)
+    end
+
+    it 'should return cabins most recently created first' do
+        Cabin.newest_first.first.should == @cabin_2#[@cabin_2,@cabin]
+    end
+
+    it 'should return the count of guests in a cabin' do 
+        @cabin_1.guest_count.should == 2
+    end
   end
 
 end

@@ -28,9 +28,21 @@ RSpec.describe 'the cabins show page' do
         expect(page).to have_content("2/#{@cabin_1.max_guest_count}")
     end
 
+    it 'has a link to the guest index' do
+        visit "/cabins/#{@cabin_1.id}"
+
+        expect(page).to have_link("Guest index", :href =>"/guests")
+    end
+
     it 'has a link to the cabin index' do
         visit "/cabins/#{@cabin_1.id}"
 
-        expect(page).to have_link("#{@guest_1.first_name} #{@guest_1.last_name}",'/cabin/#{@cabin_1.id}/guest')
+        expect(page).to have_link("Cabin index", :href =>'/cabins')
+    end
+
+    it 'has a link to the cabin index' do
+        visit "/cabins/#{@cabin_1.id}"
+
+        expect(page).to have_link("Cabin Occupants", :href =>"/cabins/#{@cabin_1.id}/guests")
     end
 end

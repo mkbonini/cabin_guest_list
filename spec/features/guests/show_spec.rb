@@ -27,4 +27,16 @@ RSpec.describe 'the guests show page' do
         expect(page).to_not have_content(@guest_2.plus_ones)
         expect(page).to_not have_content(@guest_3.plus_ones)
     end
+
+    it 'has a link to the guest index' do
+        visit "/guests/#{@guest_1.id}"
+
+        expect(page).to have_link("Guest index", :href =>"/guests")
+    end
+
+    it 'has a link to the cabin index' do
+        visit "/guests/#{@guest_1.id}"
+
+        expect(page).to have_link("Cabin index", :href =>'/cabins')
+    end
 end
