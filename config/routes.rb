@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   # resources :cabins 
   get '/cabins/:id', to: 'cabins#show'
   get '/cabins/:id/guests', to: 'cabin_guests#index'
+  get '/cabins/:id/edit', to: 'cabins#edit'
+  patch '/cabins/:id', to: 'cabins#update'
 
 end
