@@ -5,4 +5,6 @@ Rails.application.routes.draw do
 
   get '/cabins', to: 'cabins#index'
   get '/cabins/:id', to: 'cabins#show'
+  # resources :cabins 
+  get '/cabins/:id/guests', to: 'cabin_guests#index'
 end

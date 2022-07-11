@@ -1,7 +1,9 @@
 <a href='/guests'> Guest index</a>
 <a href='/cabins'> Cabin index</a>
-<h1>Guests</h1>
-<% @guests.each do |guest| %>
+
+<h1> Guests in <%= @cabin.title %></h1>
+
+<% @cabin.guests.each do |guest| %>
     <h3><%= guest.first_name %> <%= guest.last_name %></h3>
     <p>invited?: <%= guest.invite%></p>
     <p>plus ones: <%= guest.plus_ones%></p>

@@ -1,4 +1,11 @@
+<a href='/guests'> Guest index</a>
+<a href='/cabins'> Cabin index</a>
 <h1>Cabin: <%= @cabin.title %></h1>
 
 <p>co-ed?: <%= @cabin.co_ed%></p>
 <p>max number of guests: <%= @cabin.max_guest_count%></p>
+<p>occupancy: <%= @cabin.guest_count%>/<%= @cabin.max_guest_count%></p>
+
+<%# <a href="/cabins/#{@cabin.id}/guests">Cabins Occupants</a> %>
+
+<%= link_to("Cabin Occupants", "/cabins/#{@cabin.id}/guests" ) %>
