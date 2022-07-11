@@ -1,0 +1,12 @@
+<%= form_with url: '/cabins', method: :post, local: true do |form| %>
+    <%= form.label :title%>
+    <%= form.text_field :title%>
+
+    <%= form.label :co_ed%>
+    <%= form.text_field :co_ed%>
+
+    <%= form.label :max_guest_count%>
+    <%= form.text_field :max_guest_count%>
+
+    <%= form.submit "Create Cabin"%>
+<% end %>

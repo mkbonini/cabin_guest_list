@@ -1,10 +1,23 @@
 class CabinsController < ApplicationController
     def index
-        @cabins = Cabin.newest_first #all.order("created_at DESC") # move the logic to model
+        @cabins = Cabin.newest_first
     end
 
     def show
         @cabin = Cabin.find(params[:id])
-        #@count = @cabin.guests.count # move this to model
     end
+
+    def new
+    end
+
+    def create
+        cabin = Cabin.create(cabin_params)
+        redirect_to "/cabins"
+    end
+
+    private
+    def cabin_params
+        params.permit(:title, :co_ed, :max_guest_count)
+    end
+
 end
