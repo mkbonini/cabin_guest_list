@@ -8,3 +8,5 @@
     <p>invited?: <%= guest.invite%></p>
     <p>plus ones: <%= guest.plus_ones%></p>
 <% end %>
+
+<%= link_to "New Guest", "/cabins/#{@cabin.id}/guests/new"%>

@@ -29,5 +29,4 @@ class CabinsController < ApplicationController
     def cabin_params
         params.permit(:title, :co_ed, :max_guest_count)
     end
-
 end
