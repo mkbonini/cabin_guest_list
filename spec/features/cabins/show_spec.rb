@@ -40,9 +40,9 @@ RSpec.describe 'the cabins show page' do
         expect(page).to have_link("Cabin index", :href =>'/cabins')
     end
 
-    it 'has a link to the cabin index' do
+    it 'has a link to the cabins guest list' do
         visit "/cabins/#{@cabin_1.id}"
-
-        expect(page).to have_link("Cabin Occupants", :href =>"/cabins/#{@cabin_1.id}/guests")
+        click_on("Cabin Occupants")
+        expect(current_path).to eq ("/cabins/#{@cabin_1.id}/guests")
     end
 end
