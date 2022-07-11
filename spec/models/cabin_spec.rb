@@ -25,11 +25,11 @@ describe Cabin, type: :model do
     end
 
     it 'should return cabins most recently created first' do
-        Cabin.newest_first.first.should == @cabin_2#[@cabin_2,@cabin]
+        expect(Cabin.newest_first.first).to eq(@cabin_2)#[@cabin_2,@cabin]
     end
 
     it 'should return the count of guests in a cabin' do 
-        @cabin_1.guest_count.should == 2
+        expect(@cabin_1.guest_count).to eq(2)
     end
   end
 

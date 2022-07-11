@@ -1,6 +1,6 @@
 class GuestsController < ApplicationController
     def index
-        @guests = Guest.all
+        @guests = Guest.invite_only
     end
 
     def show
