@@ -11,7 +11,7 @@ RSpec.describe 'the cabins index page' do
     end
     describe 'page display' do
         it 'displays the cabin names' do
-            visit "/cabins"
+        visit "/cabins"
 
             expect(page).to have_content(@cabin_1.title)
             expect(page).to have_content(@cabin_2.title)
