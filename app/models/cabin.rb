@@ -12,4 +12,14 @@ class Cabin < ApplicationRecord
     def guest_count
         self.guests.count
     end
+
+    # def self.sort_guests(id)
+    #     #  binding.pry
+    #     guests = Cabin.find(id).guests.order("last_name")
+    # end
+
+    def sort_guests
+        #  binding.pry
+        guests = self.guests.order("last_name")
+    end
 end

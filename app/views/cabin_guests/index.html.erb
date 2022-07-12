@@ -3,10 +3,11 @@
 
 <h1> Guests in <%= @cabin.title %></h1>
 
-<% @cabin.guests.each do |guest| %>
+<% @guests.each do |guest| %>
     <h3><%= guest.first_name %> <%= guest.last_name %></h3>
     <p>invited?: <%= guest.invite%></p>
     <p>plus ones: <%= guest.plus_ones%></p>
 <% end %>
 
+<%= link_to "sort guests by last name", "/cabins/#{@cabin.id}/guests/true"%>
 <%= link_to "New Guest", "/cabins/#{@cabin.id}/guests/new"%>

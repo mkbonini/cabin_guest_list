@@ -6,8 +6,8 @@ RSpec.describe 'the guests show page' do
         @cabin_2 = Cabin.create(title: 'cabin 2', co_ed: false, max_guest_count: 10)
 
         @guest_1 = @cabin_1.guests.create(first_name: 'Mike', last_name:'Bonini', invite: true, plus_ones: 1)
-        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Doe', invite: false, plus_ones: 0)
-        @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'Doe', invite: true, plus_ones: 0)
+        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
+        @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
     it 'displays the guest details' do
         visit "/guests/#{@guest_1.id}"

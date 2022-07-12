@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get '/cabins/:id/guests', to: 'cabin_guests#index'
   get '/cabins/:id/guests/new', to: 'cabin_guests#new'
   post '/cabins/:id/guests', to: 'cabin_guests#create'
+  get '/cabins/:id/guests/:sorted', to: 'cabin_guests#index'
 
 end
