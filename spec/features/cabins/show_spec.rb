@@ -45,4 +45,10 @@ RSpec.describe 'the cabins show page' do
         click_on("Cabin Occupants")
         expect(current_path).to eq ("/cabins/#{@cabin_1.id}/guests")
     end
+
+    it 'has a link to edit the cabin' do
+        visit "/cabins/#{@cabin_1.id}"
+        click_on("Edit #{@cabin_1.title}")
+        expect(current_path).to eq ("/cabins/#{@cabin_1.id}/edit")
+    end
 end

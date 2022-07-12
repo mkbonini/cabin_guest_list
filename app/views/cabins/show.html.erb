@@ -7,3 +7,4 @@
 <p>occupancy: <%= @cabin.guest_count%>/<%= @cabin.max_guest_count%></p>
 
 <%= link_to("Cabin Occupants", "/cabins/#{@cabin.id}/guests" ) %>
+<%= link_to("Edit #{@cabin.title}", "/cabins/#{@cabin.id}/edit" ) %>
