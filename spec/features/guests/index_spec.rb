@@ -46,4 +46,10 @@ RSpec.describe 'the guests index page' do
 
         expect(page).to_not have_content(false)
     end
+
+    it 'has a link to edit the guests' do
+        visit '/guests'
+
+        expect(page).to have_link("Edit #{@guest_1.first_name} #{@guest_1.last_name}", :href =>"/guests/#{@guest_1.id}/edit")
+    end
 end

@@ -38,5 +38,6 @@ RSpec.describe 'the guests show page' do
         visit "/guests/#{@guest_1.id}"
 
         expect(page).to have_link("Cabin index", :href =>'/cabins')
+        
     end
 end

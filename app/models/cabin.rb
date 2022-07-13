@@ -1,5 +1,5 @@
 class Cabin < ApplicationRecord
-    has_many :guests
+    has_many :guests, :dependent => :destroy
 
     validates_presence_of :title
     # validates_presence_of :co_ed, inclusion: { in: [ true, false ] }
@@ -13,13 +13,11 @@ class Cabin < ApplicationRecord
         self.guests.count
     end
 
-    # def self.sort_guests(id)
-    #     #  binding.pry
-    #     guests = Cabin.find(id).guests.order("last_name")
-    # end
-
     def sort_guests
-        #  binding.pry
         guests = self.guests.order("last_name")
+    end
+
+    def get_guest_list(min_number)
+        guests = self.guests.where("plus_ones > ?", min_number)
     end
 end

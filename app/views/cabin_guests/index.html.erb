@@ -9,5 +9,12 @@
     <p>plus ones: <%= guest.plus_ones%></p>
 <% end %>
 
+<%= form_with url: "/cabins/#{@cabin.id}/guests", method: :get, local: true do |form| %>
+    <%= form.label :plus_one_count%>
+    <%= form.text_field :plus_one_count, value: 0%>
+
+    <%= form.submit "Only return records"%>
+<% end %>
+
 <%= link_to "sort guests by last name", "/cabins/#{@cabin.id}/guests/true"%>
 <%= link_to "New Guest", "/cabins/#{@cabin.id}/guests/new"%>
