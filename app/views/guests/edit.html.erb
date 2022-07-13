@@ -1,0 +1,15 @@
+<%= form_with url: "/guests/#{@guest.id}", method: :patch, local: true do |form| %>
+    <%= form.label :first_name%>
+    <%= form.text_field :first_name, value: @guest.first_name%>
+
+    <%= form.label :last_name%>
+    <%= form.text_field :last_name, value: @guest.last_name%>
+
+    <%= form.label :invite?%>
+    <%= form.text_field :invite, value: @guest.invite%>
+
+    <%= form.label :number_of_plus_ones%>
+    <%= form.text_field :plus_ones, value: @guest.plus_ones%>
+
+    <%= form.submit "Update Guest"%>
+<% end %>

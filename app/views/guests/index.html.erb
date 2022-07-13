@@ -5,4 +5,6 @@
     <h3><%= guest.first_name %> <%= guest.last_name %></h3>
     <p>invited?: <%= guest.invite%></p>
     <p>plus ones: <%= guest.plus_ones%></p>
+    <%= link_to("Edit #{guest.first_name} #{guest.last_name}", "/guests/#{guest.id}/edit" ) %>
+    <%= link_to("Delete #{guest.first_name} #{guest.last_name}", "/guests/#{guest.id}", method: :delete ) %>
 <% end %>

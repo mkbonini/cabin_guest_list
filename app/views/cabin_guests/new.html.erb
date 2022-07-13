@@ -1,0 +1,15 @@
+<%= form_with url: "/cabins/#{@cabin.id}/guests", method: :post, local: true do |form| %>
+    <%= form.label :first_name%>
+    <%= form.text_field :first_name%>
+
+    <%= form.label :last_name%>
+    <%= form.text_field :last_name%>
+
+    <%= form.label :invite?%>
+    <%= form.text_field :invite%>
+
+    <%= form.label :number_of_plus_ones%>
+    <%= form.text_field :plus_ones%>
+
+    <%= form.submit "Create Guest"%>
+<% end %>

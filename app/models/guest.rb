@@ -5,4 +5,8 @@ class Guest < ApplicationRecord
     validates_presence_of :last_name
     # validates_presence_of :invite
     validates_presence_of :plus_ones
+
+    def self.invite_only
+        @guests = Guest.where(invite: true)
+    end
 end

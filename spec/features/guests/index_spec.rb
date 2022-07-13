@@ -6,26 +6,26 @@ RSpec.describe 'the guests index page' do
         @cabin_2 = Cabin.create(title: 'cabin 2', co_ed: false, max_guest_count: 10)
 
         @guest_1 = @cabin_1.guests.create(first_name: 'Mike', last_name:'Bonini', invite: true, plus_ones: 1)
-        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Doe', invite: false, plus_ones: 0)
-        @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'Doe', invite: true, plus_ones: 0)
+        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
+        @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
     it 'displays the guests details' do
         visit "/guests"
 
         expect(page).to have_content(@guest_1.first_name)
-        expect(page).to have_content(@guest_2.first_name)
+        expect(page).to_not have_content(@guest_2.first_name)
         expect(page).to have_content(@guest_3.first_name)
 
         expect(page).to have_content(@guest_1.last_name)
-        expect(page).to have_content(@guest_2.last_name)
+        expect(page).to_not have_content(@guest_2.last_name)
         expect(page).to have_content(@guest_3.last_name)
 
         expect(page).to have_content(@guest_1.invite)
-        expect(page).to have_content(@guest_2.invite)
+        expect(page).to_not have_content(@guest_2.invite)
         expect(page).to have_content(@guest_3.invite)
 
         expect(page).to have_content(@guest_1.plus_ones)
-        expect(page).to have_content(@guest_2.plus_ones)
+        # expect(page).to_not have_content(@guest_2.plus_ones)
         expect(page).to have_content(@guest_3.plus_ones)
     end
 
@@ -39,5 +39,27 @@ RSpec.describe 'the guests index page' do
         visit "/guests"
 
         expect(page).to have_link("Cabin index", :href =>'/cabins')
+    end
+
+    it 'only displays guests with invites' do
+        visit '/guests'
+
+        expect(page).to_not have_content(false)
+    end
+
+    it 'has a link to edit the guests' do
+        visit '/guests'
+
+        expect(page).to have_link("Edit #{@guest_1.first_name} #{@guest_1.last_name}", :href =>"/guests/#{@guest_1.id}/edit")
+    end
+
+    it 'has a link to delete the guest' do
+        @guest_4 = @cabin_2.guests.create(first_name: 'should be deleted', last_name:'guest', invite: true, plus_ones: 1)
+        visit "/guests"
+
+        click_on("Delete #{@guest_4.first_name} #{@guest_4.last_name}")
+
+        expect(current_path).to eq ("/guests")
+        expect(page).to_not have_content(@guest_4.first_name)
     end
 end
