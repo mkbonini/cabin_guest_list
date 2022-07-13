@@ -4,3 +4,4 @@
     <p>invited?: <%= @guest.invite%></p>
     <p>plus ones: <%= @guest.plus_ones%></p>
     <%= button_to "Edit #{@guest.first_name} #{@guest.last_name}", "/guests/#{@guest.id}/edit", method: :get %>
+   <%= link_to("Delete #{@guest.first_name} #{@guest.last_name}", "/guests/#{@guest.id}", method: :delete ) %>

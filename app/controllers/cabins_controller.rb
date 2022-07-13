@@ -25,6 +25,11 @@ class CabinsController < ApplicationController
         redirect_to "/cabins/#{cabin.id}"
     end
 
+    def destroy
+        cabin = Cabin.find(params[:id])
+        cabin.destroy
+        redirect_to "/cabins"
+    end
     private
     def cabin_params
         params.permit(:title, :co_ed, :max_guest_count)

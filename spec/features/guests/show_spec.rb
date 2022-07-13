@@ -38,6 +38,22 @@ RSpec.describe 'the guests show page' do
         visit "/guests/#{@guest_1.id}"
 
         expect(page).to have_link("Cabin index", :href =>'/cabins')
-        
     end
+
+    it 'has a link to delete the guest' do
+        @guest_4 = @cabin_2.guests.create(first_name: 'should be deleted', last_name:'guest', invite: true, plus_ones: 1)
+        visit "/guests/#{@guest_4.id}"
+
+        click_on("Delete #{@guest_4.first_name} #{@guest_4.last_name}")
+
+        expect(current_path).to eq ("/guests")
+        expect(page).to_not have_content(@guest_4.first_name)
+    end
+#     As a visitor
+# When I visit a child show page
+# Then I see a link to delete the child "Delete Child"
+# When I click the link
+# Then a 'DELETE' request is sent to '/child_table_name/:id',
+# the child is deleted,
+# and I am redirected to the child index page where I no longer see this child
 end

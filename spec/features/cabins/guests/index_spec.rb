@@ -43,7 +43,7 @@ RSpec.describe 'the cabins index page' do
         visit "/cabins/#{@cabin_1.id}/guests"
 
         fill_in 'plus_one_count', with: 3
-        click_on("Only return records")# with more than #{page.plus_one_count} of plus ones")
+        click_on("filter guests")# with more than #{page.plus_one_count} of plus ones")
         # expect(current_path).to eq ("/cabins/#{@cabin_1.id}/guests")
         expect(page).to have_content(@guest_1.first_name)
         expect(page).to_not have_content(@guest_2.first_name)

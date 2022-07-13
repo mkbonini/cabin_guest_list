@@ -51,4 +51,16 @@ RSpec.describe 'the cabins show page' do
         click_on("Edit #{@cabin_1.title}")
         expect(current_path).to eq ("/cabins/#{@cabin_1.id}/edit")
     end
+
+    it 'has a link to delete the cabin' do
+        @cabin_3 = Cabin.create(title: 'cabin 3', co_ed: false, max_guest_count: 10)
+        @guest_4 = @cabin_3.guests.create(first_name: 'should be deleted', last_name:'guest', invite: true, plus_ones: 1)
+        visit "/cabins/#{@cabin_3.id}"
+
+        click_on("Delete #{@cabin_3.title}")
+        expect(current_path).to eq ("/cabins")
+        expect(page).to_not have_content(@cabin_3.title)
+        visit "/guests"
+        expect(page).to_not have_content(@guest_4.first_name)
+    end
 end

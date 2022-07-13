@@ -10,10 +10,11 @@
 <% end %>
 
 <%= form_with url: "/cabins/#{@cabin.id}/guests", method: :get, local: true do |form| %>
-    <%= form.label :plus_one_count%>
-    <%= form.text_field :plus_one_count, value: 0%>
-
-    <%= form.submit "Only return records"%>
+    <%# count = 0%>
+    <%= form.label :filter_guests_with_at_least_this_many_plus_ones%>
+    <%= form.text_field :plus_one_count, value: params[:count]%>
+    
+    <%= form.submit "filter guests", name: nil, value: "Show guests with #{params[:count]} or more plus ones" %>
 <% end %>
 
 <%= link_to "sort guests by last name", "/cabins/#{@cabin.id}/guests/true"%>
