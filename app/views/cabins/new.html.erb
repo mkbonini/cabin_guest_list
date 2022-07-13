@@ -3,7 +3,7 @@
     <%= form.text_field :title%>
 
     <%= form.label :co_ed%>
-    <%= form.text_field :co_ed%>
+    <%= form.select :co_ed, options_for_select([true, false]) %>
 
     <%= form.label :max_guest_count%>
     <%= form.text_field :max_guest_count%>

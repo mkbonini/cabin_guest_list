@@ -10,17 +10,18 @@
 <% end %>
 
 <%= form_with url: "/cabins/#{@cabin.id}/guests", method: :get, local: true do |form| %>
-    <% count = 0%>
     <%= form.label :filter_guests_with_at_least_this_many_plus_ones%>
-    <%= form.text_field :plus_one_count, value: params[:count]%>
+    <%= form.text_field :plus_one_count, value: params[:var]%> <%#, :inner_html => {:onchange => update_button("hello")}%>
     
-    <%= form.submit :filter_guests, value: "Show guests with #{params[:count]} or more plus ones" %>
+    <%= form.submit :filter_guests, value: "Only return records with more than #{params[:var]} of plus ones"%> <%#, :html => {:id => "SButton"} %>
 <% end %>
 
 <%= link_to "sort guests by last name", "/cabins/#{@cabin.id}/guests/true"%>
 <%= link_to "New Guest", "/cabins/#{@cabin.id}/guests/new"%>
 
 
-<script>
-
-</script>
+<%# <script>
+function update_button(var) {
+    document.getElementById('SButton').innerText = "new text";
+}
+</script> %>

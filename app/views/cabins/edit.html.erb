@@ -3,7 +3,6 @@
     <%= form.text_field :title, value: @cabin.title%>
 
     <%= form.label 'co_ed (true or false)'%>
-    <%# form.text_field :co_ed, value: @cabin.co_ed %>
     <%= form.select :co_ed, options_for_select([true, false]) %>
     <%= form.label :max_number_of_guests%>
     <%= form.text_field :max_guest_count, value: @cabin.max_guest_count%>

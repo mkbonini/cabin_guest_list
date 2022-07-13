@@ -15,7 +15,7 @@ RSpec.describe 'the cabins creation' do
 
         fill_in('first_name', with: 'new')
         fill_in('last_name', with: 'person')
-        fill_in('invite', with: true)
+        select('true', :from =>'invite')
         fill_in('plus_ones', with: 5)
         click_on('Create Guest')
         

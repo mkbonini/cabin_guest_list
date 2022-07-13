@@ -6,7 +6,7 @@
     <p>co-ed?: <%= cabin.co_ed%></p>
     <p>max number of guests: <%= cabin.max_guest_count%></p>
     <p>created at: <%= cabin.created_at%></p>
-    <%= button_to "Edit #{cabin.title}", "/cabins/#{cabin.id}/edit", method: :get %>
+    <%= link_to("Edit #{cabin.title}", "/cabins/#{cabin.id}/edit", method: :get) %>
     <%= link_to("Delete #{cabin.title}", "/cabins/#{cabin.id}", method: :delete ) %>
 <% end %>
 

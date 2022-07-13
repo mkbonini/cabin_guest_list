@@ -40,10 +40,10 @@ RSpec.describe 'the cabins index page' do
     end
 
     it 'can specifiy a number of plus ones that guests must have to display' do
-        visit "/cabins/#{@cabin_1.id}/guests"
+        visit "/cabins/#{@cabin_1.id}/guests?var=1"
 
         fill_in 'plus_one_count', with: 3
-        click_on("Show guests")
+        click_on("Only return")
 
         expect(page).to have_content(@guest_1.first_name)
         expect(page).to_not have_content(@guest_2.first_name)
