@@ -12,11 +12,10 @@ RSpec.describe 'the cabins creation' do
         visit '/cabins/new'
 
         fill_in('title', with: 'cabin title')
-        fill_in('co_ed', with: true)
+        select('true', :from =>'co_ed')
         fill_in('max_guest_count', with: 5)
         click_on('Create Cabin')
         
-        # new_cabin_id = Cabin.last.id
         expect(current_path).to eq ("/cabins") 
         expect(page).to have_content("cabin title")       
     end

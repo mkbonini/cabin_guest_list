@@ -6,7 +6,7 @@ describe Cabin, type: :model do
 
   describe "validations" do
     it { should validate_presence_of :title }
-    # it { should validate_presence_of :co_ed }
+    it { should allow_value(%w(true false)).for(:co_ed) }
     it { should validate_presence_of :max_guest_count }
   end
 
@@ -40,6 +40,5 @@ describe Cabin, type: :model do
         expect(@cabin_1.get_guest_list(1).first).to eq(@guest_1)
     end
   end
-
 end
 

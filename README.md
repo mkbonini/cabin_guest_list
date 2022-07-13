@@ -1,24 +1,14 @@
-# README
+# Cabins and guests
+## Ruby on rails application - one to many relationship
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Created by Mike Bonini
 
-Things you may want to cover:
+[database schema design](https://dbdesigner.page.link/HxZKoQAQW7H5LuPu9)
 
-* Ruby version
+test suite can be run using the terminal command `bundle exec rspec`
 
-* System dependencies
+created using:
+ruby 2.7.4
+Rails 5.2.8
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

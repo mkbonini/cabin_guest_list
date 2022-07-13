@@ -6,8 +6,8 @@
     <%= form.text_field :last_name, value: @guest.last_name%>
 
     <%= form.label :invite?%>
-    <%= form.text_field :invite, value: @guest.invite%>
-
+    <%= form.select :invite, options_for_select([true, false]) %>
+    
     <%= form.label :number_of_plus_ones%>
     <%= form.text_field :plus_ones, value: @guest.plus_ones%>
 

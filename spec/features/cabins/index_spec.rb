@@ -9,12 +9,13 @@ RSpec.describe 'the cabins index page' do
         @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
+
     describe 'page display' do
         it 'displays the cabin names' do
             visit "/cabins"
 
-            expect(page).to have_content(@cabin_1.title)
-            expect(page).to have_content(@cabin_2.title)
+            expect(page).to have_content('cabin 1')
+            expect(page).to have_content('cabin 2')
         end
 
         it 'displays the cabin created_at field' do
@@ -29,8 +30,6 @@ RSpec.describe 'the cabins index page' do
 
             first = @cabin_2.title
             second = @cabin_1.title
-
-            # expect(first).to appear_before(second)
 
             expect(page.text.index(first)).to be < page.text.index(second)
         end
@@ -54,9 +53,9 @@ RSpec.describe 'the cabins index page' do
     
             click_on("Delete #{@cabin_3.title}")
             expect(current_path).to eq ("/cabins")
-            expect(page).to_not have_content(@cabin_3.title)
+            expect(page).to_not have_content('cabin 3')
             visit "/guests"
-            expect(page).to_not have_content(@guest_4.first_name)
+            expect(page).to_not have_content('should be deleted')
         end
     end
 end
