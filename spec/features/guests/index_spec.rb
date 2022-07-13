@@ -9,6 +9,7 @@ RSpec.describe 'the guests index page' do
         @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
+    
     it 'displays the guests details' do
         visit "/guests"
 

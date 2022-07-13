@@ -30,6 +30,7 @@ class CabinsController < ApplicationController
         cabin.destroy
         redirect_to "/cabins"
     end
+    
     private
     def cabin_params
         params.permit(:title, :co_ed, :max_guest_count)
