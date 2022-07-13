@@ -25,7 +25,6 @@ RSpec.describe 'the guests index page' do
         expect(page).to have_content(@guest_3.invite)
 
         expect(page).to have_content(@guest_1.plus_ones)
-        # expect(page).to_not have_content(@guest_2.plus_ones)
         expect(page).to have_content(@guest_3.plus_ones)
     end
 

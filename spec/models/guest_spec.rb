@@ -7,7 +7,7 @@ describe Guest, type: :model do
   describe "validations" do
     it { should validate_presence_of :first_name }
     it { should validate_presence_of :last_name }
-    # it { should validate_presence_of :invite }
+    it { should allow_value(%w(true false)).for(:invite) }
     it { should validate_presence_of :plus_ones }
   end
 
@@ -24,6 +24,7 @@ describe Guest, type: :model do
       @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
       @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: false, plus_ones: 0)
     end
+    
     it 'invite only returns only guests with invite equal to true' do
       expect(Guest.invite_only.first).to eq (@guest_1)
     end

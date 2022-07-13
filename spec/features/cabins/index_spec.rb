@@ -9,6 +9,7 @@ RSpec.describe 'the cabins index page' do
         @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
+
     describe 'page display' do
         it 'displays the cabin names' do
             visit "/cabins"
@@ -29,8 +30,6 @@ RSpec.describe 'the cabins index page' do
 
             first = @cabin_2.title
             second = @cabin_1.title
-
-            # expect(first).to appear_before(second)
 
             expect(page.text.index(first)).to be < page.text.index(second)
         end

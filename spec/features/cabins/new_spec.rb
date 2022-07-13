@@ -16,7 +16,6 @@ RSpec.describe 'the cabins creation' do
         fill_in('max_guest_count', with: 5)
         click_on('Create Cabin')
         
-        # new_cabin_id = Cabin.last.id
         expect(current_path).to eq ("/cabins") 
         expect(page).to have_content("cabin title")       
     end

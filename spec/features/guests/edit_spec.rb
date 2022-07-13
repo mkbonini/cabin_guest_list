@@ -33,9 +33,3 @@ RSpec.describe 'the guests edit ' do
         expect(page).to have_content('mark')
     end
 end
-
-# As a visitor
-# When I visit the `child_table_name` index page or a parent `child_table_name` index page
-# Next to every child, I see a link to edit that child's info
-# When I click the link
-# I should be taken to that `child_table_name` edit page where I can update its information just like in User Story 11
