@@ -46,13 +46,18 @@ RSpec.describe 'the cabins index page' do
 
             expect(page).to have_link("Cabin index", :href =>'/cabins')
         end
+
+        it 'has a link to delete each parent' do
+            @cabin_3 = Cabin.create(title: 'cabin 3', co_ed: false, max_guest_count: 10)
+            @guest_4 = @cabin_3.guests.create(first_name: 'should be deleted', last_name:'guest', invite: true, plus_ones: 1)
+            visit "/cabins"
+    
+            click_on("Delete #{@cabin_3.title}")
+            expect(current_path).to eq ("/cabins")
+            expect(page).to_not have_content(@cabin_3.title)
+            visit "/guests"
+            expect(page).to_not have_content(@guest_4.first_name)
+        end
     end
 end
 
-#     describe 'CRUD' do
-#         # it 'has a link to create a new cabin' do
-#         #     visit "/cabins"
-
-#         #     expect(page).to have_link("new cabin", :href =>'/cabins/new')
-#         # end
-#     end

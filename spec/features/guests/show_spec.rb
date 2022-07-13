@@ -49,11 +49,4 @@ RSpec.describe 'the guests show page' do
         expect(current_path).to eq ("/guests")
         expect(page).to_not have_content(@guest_4.first_name)
     end
-#     As a visitor
-# When I visit a child show page
-# Then I see a link to delete the child "Delete Child"
-# When I click the link
-# Then a 'DELETE' request is sent to '/child_table_name/:id',
-# the child is deleted,
-# and I am redirected to the child index page where I no longer see this child
 end
