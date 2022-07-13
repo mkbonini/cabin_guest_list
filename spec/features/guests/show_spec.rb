@@ -6,24 +6,21 @@ RSpec.describe 'the guests show page' do
         @cabin_2 = Cabin.create(title: 'cabin 2', co_ed: false, max_guest_count: 10)
 
         @guest_1 = @cabin_1.guests.create(first_name: 'Mike', last_name:'Bonini', invite: true, plus_ones: 1)
-        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 0)
+        @guest_2 = @cabin_1.guests.create(first_name: 'John', last_name:'Aaronson', invite: false, plus_ones: 2)
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
     it 'displays the guest details' do
         visit "/guests/#{@guest_1.id}"
-        expect(page).to have_content(@guest_1.first_name)
-        expect(page).to_not have_content(@guest_2.first_name)
-        expect(page).to_not have_content(@guest_3.first_name)
+        expect(page).to have_content('Mike Bonini')
+        expect(page).to_not have_content('John Aaronson')
+        expect(page).to_not have_content('Jane lastname')
 
-        expect(page).to have_content(@guest_1.last_name)
-        expect(page).to_not have_content(@guest_2.last_name)
-        expect(page).to_not have_content(@guest_3.last_name)
 
-        expect(page).to have_content(@guest_1.invite)
+        expect(page).to have_content(true)
 
-        expect(page).to have_content(@guest_1.plus_ones)
-        expect(page).to_not have_content(@guest_2.plus_ones)
-        expect(page).to_not have_content(@guest_3.plus_ones)
+        expect(page).to have_content(1)
+        expect(page).to_not have_content(2)
+        expect(page).to_not have_content(0)
     end
 
     it 'has a link to the guest index' do

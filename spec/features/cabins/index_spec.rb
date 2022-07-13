@@ -14,8 +14,8 @@ RSpec.describe 'the cabins index page' do
         it 'displays the cabin names' do
             visit "/cabins"
 
-            expect(page).to have_content(@cabin_1.title)
-            expect(page).to have_content(@cabin_2.title)
+            expect(page).to have_content('cabin 1')
+            expect(page).to have_content('cabin 2')
         end
 
         it 'displays the cabin created_at field' do
@@ -53,9 +53,9 @@ RSpec.describe 'the cabins index page' do
     
             click_on("Delete #{@cabin_3.title}")
             expect(current_path).to eq ("/cabins")
-            expect(page).to_not have_content(@cabin_3.title)
+            expect(page).to_not have_content('cabin 3')
             visit "/guests"
-            expect(page).to_not have_content(@guest_4.first_name)
+            expect(page).to_not have_content('should be deleted')
         end
     end
 end

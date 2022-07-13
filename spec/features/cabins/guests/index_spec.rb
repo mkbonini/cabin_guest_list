@@ -11,12 +11,12 @@ RSpec.describe 'the cabins index page' do
         @guest_3 = @cabin_2.guests.create(first_name: 'Jane', last_name:'lastname', invite: true, plus_ones: 0)
     end
 
-    it 'displays the cabin names' do
+    it 'displays the cabins guest names' do
         visit "/cabins/#{@cabin_1.id}/guests"
 
-        expect(page).to have_content(@guest_1.first_name)
-        expect(page).to have_content(@guest_2.first_name)
-        expect(page).to_not have_content(@guest_3.first_name)
+        expect(page).to have_content('Mike Bonini')
+        expect(page).to have_content('John Aaronson')
+        expect(page).to_not have_content('Jane lastname')
     end
     
     it 'has a link to the guest index' do
@@ -44,7 +44,7 @@ RSpec.describe 'the cabins index page' do
 
         fill_in 'plus_one_count', with: 3
         click_on("Show guests")
-        
+
         expect(page).to have_content(@guest_1.first_name)
         expect(page).to_not have_content(@guest_2.first_name)
     end
